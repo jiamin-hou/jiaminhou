@@ -21,44 +21,83 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
             color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
         }
         nav {
-            background-color: #f4f4f4;
-            padding: 10px;
-            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 30px;
+        }
+        nav .container {
+            padding: 15px 40px;
         }
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
         }
         nav li {
             display: inline;
-            margin-right: 20px;
         }
         nav a {
             text-decoration: none;
-            color: #333;
-            font-weight: bold;
+            color: #495057;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
         nav a:hover {
             color: #007bff;
+            background: rgba(0, 123, 255, 0.1);
         }
         .header {
+            margin-bottom: 60px;
+            padding: 60px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            margin-bottom: 30px;
+        }
+        .group-description {
+            text-align: left;
+            padding-left: 40px;
         }
         .header h1 {
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             color: #2c3e50;
+            font-size: 2.2rem;
+            font-weight: 300;
         }
         .header p {
-            color: #7f8c8d;
-            margin: 5px 0;
+            color: #6c757d;
+            margin: 8px 0;
+            font-size: 1.1rem;
         }
         .profile-image {
             width: 200px;
@@ -66,179 +105,293 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
+            border: 5px solid white;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 80px;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
         .section h2 {
             color: #2c3e50;
-            border-bottom: 2px solid #bdc3c7;
-            padding-bottom: 5px;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            margin: 20px auto 0;
+            border-radius: 2px;
         }
         .section h3 {
-            color: #34495e;
-            margin-top: 25px;
+            color: #495057;
+            margin-top: 30px;
+            font-size: 1.4rem;
+        }
+        .research-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
         }
         .research-item {
-            margin-bottom: 50px;
-            padding: 30px;
-            background-color: #fafafa;
-            border-radius: 12px;
-            border-left: 4px solid #bdc3c7;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,123,255,0.1);
+        }
+        .research-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         .research-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 30px;
-        }
-        .research-item.top-align {
-            align-items: flex-start;
+            text-align: center;
         }
         .research-item img {
-            max-width: 300px;
-            height: auto;
-            border-radius: 8px;
-            flex-shrink: 0;
-            filter: brightness(1.0) contrast(.96) saturate(1.0);
-        }
-        .research-item img.medium {
+            width: 100%;
             max-width: 400px;
-        }  
-        .research-item img.large {
-            max-width: 500px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            filter: brightness(1.0) contrast(.96) saturate(1.0);
+            transition: all 0.3s ease;
         }
         .research-item .content {
-            flex: 1;
-        }
-        .research-item.reverse {
-            border-left: none;
-            border-right: 4px solid #bdc3c7;
-        }
-        .research-item.reverse .research-header {
-            flex-direction: row-reverse;
+            text-align: center;
         }
         .research-item a {
             text-decoration: none;
             color: inherit;
         }
         .research-item a:hover h3 {
-            color: #3498db;
-        }
-        .research-item img {
-            transition: transform 0.3s ease;
+            color: #007bff;
         }
         .research-item a:hover img {
-            transform: scale(1.05);
+            transform: scale(1.02);
+            filter: brightness(1.1) contrast(.98) saturate(1.1);
+        }
+        .research-item h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
         }
         .expand-indicator {
             margin-left: 10px;
-            font-size: 0.8em;
-            color: #7f8c8d;
+            font-size: 0.9em;
+            color: #003d82;
+            font-weight: 500;
+        }
+        .about-content {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .career-timeline {
+            margin-top: 40px;
+            text-align: left;
+        }
+        .career-item {
+            margin-bottom: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .career-item:last-child {
+            border-bottom: none;
+        }
+        .career-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        .career-institution {
+            color: #6c757d;
+            font-size: 1.05rem;
+        }
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .position-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #003d82;
+        }
+        @media (max-width: 1200px) {
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            nav .container {
+                padding: 15px 20px;
+            }
+            .section {
+                padding: 30px 20px;
+            }
+            .header {
+                padding: 40px 20px;
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .group-description {
+                padding-left: 0;
+                text-align: center;
+            }
         }
         .publications {
             margin-left: 20px;
         }
         .contact-info {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
         .footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #666;
-            font-size: 0.9em;
+            margin-top: 60px;
+            padding: 40px 0;
+            background: white;
+            border-radius: 20px 20px 0 0;
+            color: #6c757d;
+            font-size: 0.95em;
         }
         .footer a {
-            color: #666;
+            color: #6c757d;
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #007bff;
         }
     </style>
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#group">Group Members</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="#positions">Open Positions</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#group">Group Members</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="#positions">Open Positions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <div class="header">
-        <img src="figs/wendelstein.jpg" alt="Jiamin Hou" class="profile-image">
-        <h1>Jiamin Hou</h1>
-        <p>Research Associate at University of Cambridge</p>
-        <p>Emmy Noether Group Leader (from Jan 2026)</p>
-    </div>
+    <div class="container">
 
-        <p>My group focuses on bridging the observational data and fundamental physics. In particular, the group is interested in applying higher-order statistics to galaxy data to extract cosmological information from the galaxy distribution, study the growth of cosmic structures, probe early-Universe physics, and test fundamental symmetries such as parity violation on cosmological scales.</p>
+    <div class="header">
+        <div class="profile-section">
+            <img src="figs/wendelstein.jpg" alt="Jiamin Hou" class="profile-image">
+            <h1>Jiamin Hou</h1>
+            <p>Research Associate at University of Cambridge</p>
+            <p>Emmy Noether Group Leader (from Jan 2026)</p>
+        </div>
+
+        <div class="group-description">
+            <p style="font-size: 1.3rem; color: #495057; line-height: 1.6;">My group focuses on bridging the observational data and fundamental physics. In particular, the group is interested in applying higher-order statistics to galaxy data to extract cosmological information from the galaxy distribution, study the growth of cosmic structures, probe early-Universe physics, and test fundamental symmetries such as parity violation on cosmological scales.</p>
+        </div>
+    </div>
 
     <section id="about" class="section">
         <h2>About Me</h2>
+        <div class="about-content">
+            <p style="font-size: 1.2rem;">I completed my PhD at the Max Planck Institute for Extraterrestrial Physics and obtained my degree from Ludwig-Maximilians-Universität München in 2020. I received the Marie Skłodowska-Curie Fellowship in the 2020 call, with MPE as the home institute and jointly hosted by the University of Florida. I am currently a research associate at the University of Cambridge, affiliated with the Institute of Astronomy and the Kavli Institute for Cosmology.</p>
 
-        <p> I completed my PhD at the Max Planck Institute for Extraterrestrial Physics and obtained my degree from Ludwig-Maximilians-Universität München in 2020. I received the Marie Skłodowska-Curie Fellowship in the 2020 call, with MPE as the home institute and jointly hosted by the University of Florida. I am currently a research associate at the University of Cambridge, affiliated with the Institute of Astronomy and the Kavli Institute for Cosmology.</p>
-
-        <p><strong>Emmy Noether Group Leader</strong>, Ludwig-Maximilians-Universität München (2026 - )</p>
-
-        <p><strong>Research Associate</strong>, University of Cambridge (2025)</p>
-
-        <p><strong>Marie Skłodowska-Curie Fellow</strong>, Max-Planck-Institute for Extraterrestrial Physics (2022 - 2025)<br>
-
-        <p><strong>Postdoctoral Researcher</strong>, University of Florida (2020 - 2022)</p>
-
-        <p><strong>Postdoctoral Researcher</strong>, Max-Planck-Institute for Extraterrestrial Physics (2020)</p>
-
+            <div class="career-timeline">
+                <div class="career-item">
+                    <div class="career-title">Emmy Noether Group Leader</div>
+                    <div class="career-institution">Ludwig-Maximilians-Universität München (2026 - )</div>
+                </div>
+                <div class="career-item">
+                    <div class="career-title">Research Associate</div>
+                    <div class="career-institution">University of Cambridge (2025)</div>
+                </div>
+                <div class="career-item">
+                    <div class="career-title">Marie Skłodowska-Curie Fellow</div>
+                    <div class="career-institution">Max-Planck-Institute for Extraterrestrial Physics (2022 - 2025)</div>
+                </div>
+                <div class="career-item">
+                    <div class="career-title">Postdoctoral Researcher</div>
+                    <div class="career-institution">University of Florida (2020 - 2022)</div>
+                </div>
+                <div class="career-item">
+                    <div class="career-title">Postdoctoral Researcher</div>
+                    <div class="career-institution">Max-Planck-Institute for Extraterrestrial Physics (2020)</div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="research" class="section">
         <h2>Research</h2>
 
-        <div class="research-item">
-            <div class="research-header">
-                <a href="parity-violation.html">
-                    <img src="figs/axion.png" alt="Tetrahedron for 4-point correlation function" class="large">
-                </a>
-                <div class="content">
-                    <h3><a href="parity-violation.html">Parity Violation on Cosmological Scales<span class="expand-indicator">→ Learn more</span></a></h3>
+        <div class="research-grid">
+            <div class="research-item">
+                <div class="research-header">
+                    <a href="parity-violation.html">
+                        <img src="figs/axion.png" alt="Tetrahedron for 4-point correlation function">
+                    </a>
+                    <div class="content">
+                        <h3><a href="parity-violation.html">Parity Violation on Cosmological Scales<span class="expand-indicator">→ Learn more</span></a></h3>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="research-item reverse">
-            <div class="research-header">
-                <a href="simulation-based-inference.html">
-                    <img src="figs/sbi-pipeline.png" alt="SBI pipeline for skew spectra" class="medium">
-                </a>
-                <div class="content">
-                    <h3><a href="simulation-based-inference.html">Simulation-based Inference and Higher-order Statistics<span class="expand-indicator">→ Learn more</span></a></h3>
+            <div class="research-item">
+                <div class="research-header">
+                    <a href="simulation-based-inference.html">
+                        <img src="figs/sbi-pipeline.png" alt="SBI pipeline for skew spectra">
+                    </a>
+                    <div class="content">
+                        <h3><a href="simulation-based-inference.html">Simulation-based Inference and Higher-order Statistics<span class="expand-indicator">→ Learn more</span></a></h3>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="research-item">
-            <div class="research-header">
-                <a href="spherical-harmonics.html">
-                    <img src="figs/Ylm.png" alt="Spherical harmonics for NPCFs" class="large">
-                </a>
-                <div class="content">
-                    <h3><a href="spherical-harmonics.html">Spherical Harmonics and Fast Algorithm<span class="expand-indicator">→ Learn more</span></a></h3>
+            <div class="research-item">
+                <div class="research-header">
+                    <a href="spherical-harmonics.html">
+                        <img src="figs/Ylm.png" alt="Spherical harmonics for NPCFs">
+                    </a>
+                    <div class="content">
+                        <h3><a href="spherical-harmonics.html">Spherical Harmonics and Fast Algorithm<span class="expand-indicator">→ Learn more</span></a></h3>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="research-item reverse">
-            <div class="research-header">
-                <a href="galaxy-survey.html">
-                    <img src="figs/desi-kittpeak.png" alt="DESI at Kitt Peak" class="medium">
-                </a>
-                <div class="content">
-                    <h3><a href="galaxy-survey.html">Galaxy Survey and Data<span class="expand-indicator">→ Learn more</span></a></h3>
+            <div class="research-item">
+                <div class="research-header">
+                    <a href="galaxy-survey.html">
+                        <img src="figs/desi-kittpeak.png" alt="DESI at Kitt Peak">
+                    </a>
+                    <div class="content">
+                        <h3><a href="galaxy-survey.html">Galaxy Survey and Data<span class="expand-indicator">→ Learn more</span></a></h3>
+                    </div>
                 </div>
             </div>
         </div>
@@ -252,34 +405,46 @@
     <section id="interests" class="section">
         <h2>My Life Interest</h2>
 
-        <p>My passion for the Universe stems from my passion in comprehending time and existence. I want to explore the language behind the world and the flow of life. I prefer to observe before I can fully express my respect for the nature.</p>
+        <p style="font-size: 1.2rem;">My passion for the Universe stems from my passion in comprehending time and existence. I want to explore the language behind the world and the flow of life. I prefer to observe before I can fully express my respect for the nature.</p>
 
-        <p>Apart from my research interest, I enjoy poems, scotches, extreme sports, and German bread.</p>
+        <p style="font-size: 1.2rem;">Apart from my research interest, I enjoy poems, scotches, extreme sports, and German bread.</p>
     </section>
 
     <section id="positions" class="section">
         <h2>Open Positions</h2>
-        <p>My group is currently seeking PhD students and postdoctoral researchers. Please reach out for more information!</p>
+        <p style="text-align: center; font-size: 1.32rem; margin-bottom: 40px;">My group is currently seeking PhD students and postdoctoral researchers. Please reach out for more information!</p>
 
-        <p><strong>PhD Position:</strong> Apply through the <a href="https://application.imprs-astro.mpg.de/" target="_blank">International Max Planck Research School</a>.</p>
+        <div class="positions-grid">
+            <div class="position-card">
+                <h3 style="color: #003d82; margin-bottom: 15px;">PhD Position</h3>
+                <p>Apply through the <a href="https://application.imprs-astro.mpg.de/" target="_blank">International Max Planck Research School</a>.</p>
+            </div>
 
-        <p><strong>Postdoc Position:</strong> See the announcement for <a href="https://aas.org/jobregister/ad/02679d6a" target="_blank">Fraunhofer-Schwarzschild Postdoctoral Fellowships at LMU</a>.</p>
+            <div class="position-card">
+                <h3 style="color: #003d82; margin-bottom: 15px;">Postdoc Position</h3>
+                <p>See the announcement for <a href="https://aas.org/jobregister/ad/02679d6a" target="_blank">Fraunhofer-Schwarzschild Postdoctoral Fellowships at LMU</a>.</p>
+            </div>
+        </div>
     </section>
 
     <section id="contact" class="section">
         <h2>Contact</h2>
         <div class="contact-info">
-            <p><strong>Email:</strong> jiamin.hou@ast.cam.ac.uk</p>
-            <p><strong>Address:</strong><br>
+            <p style="font-size: 1.2rem;"><strong>Email:</strong> jiamin.hou@ast.cam.ac.uk</p>
+            <p style="font-size: 1.2rem;"><strong>Address:</strong><br>
             University of Cambridge<br>
             Madingley Road, Cambridge CB3 0HA<br>
             United Kingdom</p>
         </div>
     </section>
 
+    </div>
+
     <footer class="footer">
-        <p>© 2024 Jiamin Hou. All rights reserved.</p>
-        <p><a href="#">Imprint</a> | <a href="#">Data Protection</a></p>
+        <div class="container">
+            <p>© 2024 Jiamin Hou. All rights reserved.</p>
+            <p><a href="#">Imprint</a> | <a href="#">Data Protection</a></p>
+        </div>
     </footer>
 
 </body>
