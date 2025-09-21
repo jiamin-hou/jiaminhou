@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spherical Harmonics and Fast Algorithm - Jiamin Hou</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #bdc3c7;
+        }
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .research-image {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .research-image img {
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+        }
+        .research-image.float-left {
+            float: left;
+            margin: 0 20px 20px 0;
+            text-align: left;
+        }
+        .research-image.float-left img {
+            max-width: 450px;
+        }
+        .content-section {
+            margin-bottom: 40px;
+            padding: 0;
+        }
+        .content-section h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        .header {
+            border-bottom: none;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Research</a>
+
+    <div class="header">
+        <h1>Spherical Harmonics and Fast Algorithm</h1>
+        <p>Computational breakthroughs for higher-order correlation functions</p>
+    </div>
+
+    <div class="research-image">
+        <img src="figs/Ylm.png" alt="Spherical harmonics visualization">
+    </div>
+
+    <div class="content-section">
+        <h2>Why Spherical Harmonics</h2>
+        <p>Spherical harmonics provide a natural and powerful basis for decomposing four-point functions in cosmology. Given the statistical isotropy of the Universe, it is essential to use a basis that respects rotational invariance. Each set of spherical harmonics spans a $(2\ell + 1)$-dimensional vector space, and tensor products of multiple such spaces decompose into a direct sum of irreducible representations labeled by total angular momentum $L$. The rotationally invariant singlet state ($L=0$) plays a key role in isolating isotropic contributions. In addition, spherical harmonics naturally separate into even and odd $\ell$, making them directly sensitive to parity transformations. Their factorizability further enables higher-order correlators to be reduced to products of pairwise computations, ensuring scalability to large datasets by significantly reducing computational cost.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>Algorithm Performance</h2>
+        <div class="research-image float-left">
+            <img src="timing_4PCF_IsoFunc_BruteForce_comparison.pdf" alt="Timing comparison: 4PCF isotropic function vs brute-force">
+        </div>
+        <p>Comparison of computational costs shows that spherical-harmonic-based N-point correlation function (NPCF) algorithms drastically outperform traditional brute-force approaches. In our benchmark studies, the dashed lines indicate a power-law extrapolation of the brute-force method, which would make NPCF calculations nearly infeasible for modern galaxy surveys. With GPU acceleration, computing the four-point function for millions of galaxies can be done in just a few minutes.</p>
+        <p><strong>Related Publications:</strong> Philcox ++  <strong>JH</strong> ++ (2021), arXiv:2105.08722</p>
+        <p style="margin-left: 635px; margin-top: -10px; margin-bottom: 90px;"> Sunseri ++ <strong>JH</strong> ++ (2022), arXiv:2210.10206</p>
+
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Jiamin Hou. All rights reserved.</p>
+    </div>
+</body>
+</html>
