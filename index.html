@@ -24,7 +24,11 @@
             margin: 0;
             padding: 0;
             color: #333;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: linear-gradient(rgba(248, 249, 250, 0.7), rgba(233, 236, 239, 0.7)), url('figs/nutshell.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             min-height: 100vh;
         }
         .container {
@@ -70,7 +74,7 @@
         .header {
             margin-bottom: 60px;
             padding: 60px;
-            background: white;
+            background: rgba(255, 255, 255, 0.75);
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             display: grid;
@@ -110,7 +114,7 @@
         }
         .section {
             margin-bottom: 80px;
-            background: white;
+            background: rgba(255, 255, 255, 0.75);
             padding: 50px;
             border-radius: 20px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
@@ -273,7 +277,7 @@
             text-align: center;
             margin-top: 60px;
             padding: 40px 0;
-            background: white;
+            background: rgba(255, 255, 255, 0.75);
             border-radius: 20px 20px 0 0;
             color: #6c757d;
             font-size: 0.95em;
@@ -286,9 +290,32 @@
         .footer a:hover {
             color: #007bff;
         }
+        .logo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 1;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        .logo.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
+    <img src="figs/nutshell.jpg" alt="Logo" class="logo">
+
     <nav>
         <div class="container">
             <ul>
@@ -446,6 +473,19 @@
             <p><a href="#">Imprint</a> | <a href="#">Data Protection</a></p>
         </div>
     </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const logo = document.querySelector('.logo');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > 100) {
+                logo.classList.add('hidden');
+            } else {
+                logo.classList.remove('hidden');
+            }
+        });
+    </script>
 
 </body>
 </html>
