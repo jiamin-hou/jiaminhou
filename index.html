@@ -25,53 +25,78 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.65;
-            margin: 0;
+            margin: 0 0 0 220px;
             padding: 0;
             color: #333;
             background: #fff;
         }
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 32px;
         }
         nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            bottom: 0;
+            width: 220px;
+            background: #f2f3f5;
+            border-right: 1px solid #e3e6ea;
             z-index: 100;
-            border-bottom: 1px solid #e9ecef;
+            overflow-y: auto;
         }
-        nav .container {
-            padding: 15px 32px;
+        .brand {
+            padding: 30px 26px 20px;
+            border-bottom: 1px solid #e3e6ea;
+        }
+        .brand a {
+            color: #2c3e50;
+            font-size: 1.18rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+        }
+        .brand a:hover {
+            color: #003d82;
+        }
+        .brand span {
+            display: block;
+            color: #6c757d;
+            font-size: 0.74rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            margin-top: 5px;
         }
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 16px;
         }
         nav li {
-            display: inline;
+            display: block;
         }
-        nav a {
+        nav ul a {
+            display: block;
+            padding: 13px 23px;
+            border-left: 3px solid transparent;
+            border-bottom: 1px solid #e6e8ec;
             text-decoration: none;
             color: #495057;
             font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
+            font-size: 0.84rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            transition: all 0.25s ease;
         }
-        nav a:hover {
+        nav ul a:hover {
             color: #003d82;
+            background: rgba(0, 61, 130, 0.05);
+        }
+        nav ul a.active {
+            color: #003d82;
+            border-left-color: #003d82;
             background: rgba(0, 61, 130, 0.06);
-        }
-        nav a.active {
-            color: #003d82;
-            background: rgba(0, 61, 130, 0.08);
         }
 
         .band {
@@ -99,7 +124,7 @@
             border-radius: 1px;
         }
         section {
-            scroll-margin-top: 76px;
+            scroll-margin-top: 24px;
         }
 
         .js .fade-up {
@@ -270,7 +295,7 @@
 
         #interests {
             background: #fff url('figs/BAO-person-ai.jpeg') no-repeat bottom center;
-            background-size: 65%;
+            background-size: 75%;
             padding-bottom: 500px;
         }
         .interests-content {
@@ -331,15 +356,43 @@
             }
         }
         @media (max-width: 768px) {
+            body {
+                margin: 0;
+            }
             .container {
                 padding: 0 20px;
             }
-            nav .container {
-                padding: 15px 92px 15px 16px;
+            nav {
+                position: sticky;
+                top: 0;
+                bottom: auto;
+                width: auto;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+                overflow: visible;
+            }
+            .brand {
+                display: none;
             }
             nav ul {
+                display: flex;
                 flex-wrap: wrap;
                 gap: 6px 10px;
+                padding: 12px 92px 12px 16px;
+            }
+            nav ul a {
+                display: inline-block;
+                padding: 8px 14px;
+                border: none;
+                border-radius: 20px;
+                text-transform: none;
+                letter-spacing: normal;
+                font-size: 0.95rem;
+            }
+            section {
+                scroll-margin-top: 76px;
             }
             .band {
                 padding: 44px 0;
@@ -379,18 +432,20 @@
     <a href="#interests"><img src="figs/BAO-person-ai.jpeg" alt="Logo" class="logo"></a>
 
     <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#group">Group Members</a></li>
-                <li><a href="publications.html">Publications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        <div class="brand">
+            <a href="#home">Jiamin Hou</a>
+            <span>Cosmology · LMU Munich</span>
         </div>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#group">Group Members</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
-    <header class="band hero">
+    <header id="home" class="band hero">
         <div class="container fade-up">
             <div class="profile-section">
                 <img src="figs/wendelstein.jpg" alt="Jiamin Hou" class="profile-image">
@@ -555,8 +610,9 @@
                 if (!target) return;
                 e.preventDefault();
                 try { history.pushState(null, '', href); } catch (err) {}
+                var offset = window.matchMedia('(max-width: 768px)').matches ? 66 : 20;
                 var startY = window.pageYOffset;
-                var endY = target.getBoundingClientRect().top + startY - 66;
+                var endY = target.getBoundingClientRect().top + startY - offset;
                 var startTime = Date.now();
                 var timer = setInterval(function() {
                     var t = Math.min((Date.now() - startTime) / 900, 1);
