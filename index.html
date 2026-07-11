@@ -22,9 +22,6 @@
     <meta name="google-site-verification" content="CqJ-pajxuF8NdXXHeQbFs-i-m15pSk7WHqvAihyWiW0" />
     <script>document.documentElement.className += ' js';</script>
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.65;
@@ -114,17 +111,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-            .js .fade-up {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-        }
-
         .hero {
             border-top: none;
             min-height: 58vh;
@@ -559,6 +545,26 @@
         }, { rootMargin: '-35% 0px -60% 0px' });
         document.querySelectorAll('section[id]').forEach(function(s) {
             sectionSpy.observe(s);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                var href = a.getAttribute('href');
+                if (href.length < 2) return;
+                var target = document.querySelector(href);
+                if (!target) return;
+                e.preventDefault();
+                try { history.pushState(null, '', href); } catch (err) {}
+                var startY = window.pageYOffset;
+                var endY = target.getBoundingClientRect().top + startY - 66;
+                var startTime = Date.now();
+                var timer = setInterval(function() {
+                    var t = Math.min((Date.now() - startTime) / 900, 1);
+                    var ease = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+                    window.scrollTo(0, startY + (endY - startY) * ease);
+                    if (t >= 1) clearInterval(timer);
+                }, 16);
+            });
         });
     </script>
 
