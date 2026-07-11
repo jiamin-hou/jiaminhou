@@ -228,17 +228,21 @@
             color: #6c757d;
             font-size: 1.05rem;
         }
-        .positions-grid {
+        .member-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px auto 0;
+            max-width: 800px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px 30px;
         }
-        .position-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 4px solid #003d82;
+        .member-list li {
+            font-size: 1.2rem;
+            color: #495057;
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+            text-align: center;
         }
         @media (max-width: 1200px) {
             .research-grid {
@@ -326,7 +330,6 @@
                 <li><a href="#research">Research</a></li>
                 <li><a href="#group">Group Members</a></li>
                 <li><a href="publications.html">Publications</a></li>
-                <li><a href="#positions">Open Positions</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -428,24 +431,14 @@
 
     <section id="group" class="section">
         <h2>Group Members</h2>
-        <p>Coming Soon!</p>
-    </section>
-
-    <section id="positions" class="section">
-        <h2>Open Positions</h2>
-        <p style="text-align: center; font-size: 1.32rem; margin-bottom: 40px;">My group is currently seeking PhD students and postdoctoral researchers. Please reach out for more information!</p>
-
-        <div class="positions-grid">
-            <div class="position-card">
-                <h3 style="color: #003d82; margin-bottom: 15px;">PhD Position</h3>
-                <p>Apply through the <a href="https://application.imprs-astro.mpg.de/" target="_blank">International Max Planck Research School</a>.</p>
-            </div>
-
-            <div class="position-card">
-                <h3 style="color: #003d82; margin-bottom: 15px;">Postdoc Position</h3>
-                <p>See the announcement for <a href="https://aas.org/jobregister/ad/02679d6a" target="_blank">Fraunhofer-Schwarzschild Postdoctoral Fellowships at LMU</a>.</p>
-            </div>
-        </div>
+        <ul class="member-list">
+            <li>Pritha Paul</li>
+            <li>Sijin Chen</li>
+            <li>John Turan</li>
+            <li>Huy Nguyen</li>
+            <li>Michael Ho</li>
+            <li>Qianyuan Yang</li>
+        </ul>
     </section>
 
     <section id="contact" class="section" style="margin-bottom: 600px;">

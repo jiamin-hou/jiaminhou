@@ -38,7 +38,7 @@
             margin: 30px 0;
         }
         .research-image img {
-            max-width: 500px;
+            max-width: min(500px, 100%);
             height: auto;
             border-radius: 8px;
         }
@@ -48,7 +48,7 @@
             text-align: left;
         }
         .research-image.float-left img {
-            max-width: 400px;
+            max-width: min(400px, 50%);
         }
         .research-image.float-left img[src*="pop.png"] {
             max-width: 250px;
@@ -104,6 +104,39 @@
             border-top: 1px solid #ddd;
             color: #666;
         }
+        .content-section::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .related-pubs {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 2px 8px;
+            margin: 15px 0;
+        }
+        .related-pubs ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        @media (max-width: 768px) {
+            .research-image.float-left,
+            .research-image.float-right,
+            .content-section .research-image:not(.float-left):not(.float-right) {
+                float: none;
+                margin: 20px 0;
+                text-align: center;
+            }
+            .research-image.float-left img,
+            .research-image.float-right img,
+            .content-section .research-image:not(.float-left):not(.float-right) img {
+                max-width: 100%;
+            }
+            .related-pubs {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -129,9 +162,14 @@
 
         <p><strong>BOSS Data Results:</strong> We employ 4-point correlation functions to isolate parity-odd information from galaxy clustering data. Our analysis of the Baryon Oscillation Spectroscopic Survey (BOSS) data yielded an intriguing indication of parity violation in large-scale structure. Although estimating statistical uncertainties remains a key challenge, these results motivate extending the framework to include complementary estimators, improved physical modeling, and new datasets.</p>
 
-        <p><strong>Related Publications:</strong> <strong>JH</strong>, Slepian, Cahn (2022), arXiv:2206.03625</p>
-        <p style="margin-left: 170px; margin-top: -10px;">Cahn, Slepian, <strong>JH</strong> (2021), arXiv: 2110.12004</p>
-        <p style="margin-left: 170px; margin-top: -10px;">Philcox (2022), arXiv: 2206.04227</p>
+        <div class="related-pubs">
+            <strong>Related Publications:</strong>
+            <ul>
+                <li><strong>JH</strong>, Slepian, Cahn (2022), arXiv:2206.03625</li>
+                <li>Cahn, Slepian, <strong>JH</strong> (2021), arXiv: 2110.12004</li>
+                <li>Philcox (2022), arXiv: 2206.04227</li>
+            </ul>
+        </div>
     </div>
 
     <div class="content-section">
